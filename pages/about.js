@@ -1,5 +1,3 @@
-import NavBar from "../Components/NavBar";
-
 export default () => {
   return (
     <div>

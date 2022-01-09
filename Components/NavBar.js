@@ -12,19 +12,6 @@ export default () => {
       <Link href="/about">
         <a className={router.pathname === "/about" ? "active" : ""}>About</a>
       </Link>
-
-      <style jsx>{`
-        .active {
-          background-color: #6c5ce7;
-          color: white;
-          border-radius: 5px;
-        }
-
-        a {
-          text-decoration: none;
-          margin-right: 10px;
-        }
-      `}</style>
     </nav>
   );
 };
