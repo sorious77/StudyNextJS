@@ -1,30 +1,30 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import styles from "./NavBar.module.css";
 
 export default () => {
   const router = useRouter();
 
   return (
-    <nav className={styles.nav}>
+    <nav>
       <Link href="/">
-        <a
-          className={`${styles.link} ${
-            router.pathname === "/" ? styles.active : ""
-          }`}
-        >
-          Home
-        </a>
+        <a className={router.pathname === "/" ? "active" : ""}>Home</a>
       </Link>
       <Link href="/about">
-        <a
-          className={`${styles.link} ${
-            router.pathname === "/about" ? styles.active : ""
-          }`}
-        >
-          About
-        </a>
+        <a className={router.pathname === "/about" ? "active" : ""}>About</a>
       </Link>
+
+      <style jsx>{`
+        .active {
+          background-color: #6c5ce7;
+          color: white;
+          border-radius: 5px;
+        }
+
+        a {
+          text-decoration: none;
+          margin-right: 10px;
+        }
+      `}</style>
     </nav>
   );
 };
