@@ -1,15 +1,38 @@
-import { useEffect, useState } from "react";
 import Header from "../Components/Header";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default ({ results }) => {
+  const router = useRouter();
+
+  const onClick = (id, title) => {
+    router.push(
+      {
+        pathname: `/movies/${id}`,
+        query: {
+          title,
+        },
+      },
+      `/movies/${id}`
+    );
+  };
+
   return (
     <div>
       <div className="container">
         <Header title="Home" />
         {results?.map((movie) => (
-          <div key={movie.id} className="movie">
+          <div
+            className="movie"
+            key={movie.id}
+            onClick={() => onClick(movie.id, movie.original_title)}
+          >
             <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
-            <h4>{movie.original_title}</h4>
+            <h4>
+              <Link href={`/movies/${movie.id}`}>
+                <a>{movie.original_title}</a>
+              </Link>
+            </h4>
           </div>
         ))}
       </div>
@@ -38,6 +61,11 @@ export default ({ results }) => {
         .movie h4 {
           font-size: 18px;
           text-align: center;
+        }
+
+        .movie a {
+          color: black;
+          text-decoration: none;
         }
       `}</style>
     </div>

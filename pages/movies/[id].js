@@ -4,10 +4,8 @@ export default () => {
   const router = useRouter();
 
   const {
-    query: { movieId },
+    query: { id, title },
   } = router;
 
-  console.log(movieId);
-
-  return "detail";
+  return <h4>{title || "Loading..."}</h4>;
 };
